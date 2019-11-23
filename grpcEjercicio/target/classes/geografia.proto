@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "com.bryan.grpc";
+
+service Paises {
+	rpc getCapital(paisRequest) returns (capitalResponse) {}
+	rpc getCiudades(paisRequest) returns (stream ciudadResponse) {}
+	rpc getCantidadHabitantes (stream paisRequest) returns (habitantesResponse) {}
+	rpc getMultiplesCapital(stream paisRequest) returns (stream capitalResponse) {}
+}
+
+message paisRequest {
+	string nombrePais = 1;
+}
+
+message capitalResponse {
+	string nombreCapital = 1;
+}
+
+message ciudadResponse {
+	string nombreCiudad = 1;
+}
+
+message habitantesResponse {
+	int32 habitantes = 1;
+}
+
